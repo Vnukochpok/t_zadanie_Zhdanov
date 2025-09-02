@@ -21,6 +21,10 @@
         $_SESSION['login']=$new_number;
         $_SESSION['password']=$new_password;
         header("Location: user_profile.php");
+    } else{
+        echo "Данные не были обновлены, произошла ошибка<br>";
+        echo "<a href='index.php'>Главная страница</a><br>";
+        echo "<a href='user_profile.php'>Профиль</a>";
     }
 
 ?>
