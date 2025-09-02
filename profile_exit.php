@@ -1,5 +1,6 @@
 <?php
     session_start();
+    //удаление данных в сессии, завершение сессии
     unset($_SESSION['login']);
     unset($_SESSION['password']);
     session_destroy();
