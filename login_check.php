@@ -47,17 +47,17 @@
 
             //после проверки токена создаю sql запрос для проверки есть ли такой пользователь в базе данных и верно ли он ввел логин/пароль
             $sql = "SELECT * FROM users WHERE (email = '$login' OR number = '$login') AND password = '$password'";
-            $row_sql = $conn->query($sql)->num_rows;
+            $sqlRow = $conn->query($sql)->num_rows;
             //если в ответ получаю 1 строку, то пользователь найден в базе данных и можно переводить его на страницу профиля,
             //а также давать ему доступ для входа в профиль
-            if ($row_sql = 1) {
+            if ($sqlRow = 1) {
                 session_start();
                 //при входе в профиль у меня происходит проверка на наличии в сессии данных, если данных нет, то профиль недоступен
                 $_SESSION['login'] = $login;
                 $_SESSION['password'] = $password;
                 header("Location: user_profile.php");
             
-            } else if ($row_sql < 1) {
+            } else if ($sqlRow < 1) {
                 echo "Пользователь не найден" . "<br>";
                 echo "<a href='login.php'>Страница авторизации</a>";
             }

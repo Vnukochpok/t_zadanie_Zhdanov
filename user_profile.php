@@ -6,23 +6,23 @@
     //создание сессии, подлючение к БД, а также получение данных из сессии
     session_start();
     require("connect_bd_php");
-    $userlogin = $_SESSION['login'];
-    $userpassword = $_SESSION['password'];
+    $userLogin = $_SESSION['login'];
+    $userPassword = $_SESSION['password'];
 
     //проверка на наличие в сесси данных, если данных в сессии нет, то пользователь не сможет войти в профиль
     if ($_SESSION['login'] == "" || $_SESSION['password'] == "") {
         header("Location: index.php");
     } else {
         //вывод информации о пользователе
-        $sql = "SELECT * FROM users WHERE (email='$userlogin' OR number='$userlogin') AND password = '$userpassword'";
-        $sql_res = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM users WHERE (email='$userLogin' OR number='$userLogin') AND password = '$userPassword'";
+        $sqlRes = mysqli_query($conn, $sql);
 
-        if (mysqli_num_rows($sql_res) == 1) {
-            $user_data = mysqli_fetch_assoc($sql_res);
-            echo "Имя пользователя: " . $user_data['name'] . "<br>";
-            echo "Email пользователя: " . $user_data['email'] . "<br>";
-            echo "Телефон пользователя: " . $user_data['number'] . "<br>";
-            echo "Пароль пользователя: " . $user_data['password'] . "<br>";
+        if (mysqli_num_rows($sqlRes) == 1) {
+            $userData = mysqli_fetch_assoc($sqlRes);
+            echo "Имя пользователя: " . $userData['name'] . "<br>";
+            echo "Email пользователя: " . $userData['email'] . "<br>";
+            echo "Телефон пользователя: " . $userData['number'] . "<br>";
+            echo "Пароль пользователя: " . $userData['password'] . "<br>";
         } else {
             echo "Произошла ошибка в БД";
             echo "<a href='user_profile.php'>Вернуться в профиль</a>";
