@@ -1,5 +1,5 @@
 <?php
-    $title="Вход";
+    $title = "Вход";
     require("blocks/header.php");
 ?>
     

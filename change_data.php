@@ -1,4 +1,5 @@
 <?php
+
     //создание сессии, подключение к БД
     session_start();
     require("connect_bd_php");
@@ -7,24 +8,22 @@
     $login = $_SESSION['login'];
 
     //получение данных POST
-    $new_username=$_POST['username'];
-    $new_email=$_POST['email'];
-    $new_number=$_POST['number'];
-    $new_password=$_POST['password'];
+    $new_email = $_POST['email'];
+    $new_number = $_POST['number'];
+    $new_username = $_POST['username'];
+    $new_password = $_POST['password'];
 
     //скрипт для изменения данных пользователя, здесь пригодились данные из сессии
-    $sql="UPDATE users SET name='$new_username', email='$new_email', number='$new_number', password='$new_password' WHERE email='$login' or number='$login';";
+    $sql = "UPDATE users SET name = '$new_username', email = '$new_email', number = '$new_number', password = '$new_password' WHERE email = '$login' or number = '$login';";
 
     //обновление данных в БД и сессиях, обновление данных в сессии нужно, чтобы далее пользователь мог заходить в профиль под новым логином
-    if($conn->query($sql) === TRUE){
+    if ($conn->query($sql) === true) {
         echo "Данные о пользователе успешно обновлены!";
-        $_SESSION['login']=$new_number;
-        $_SESSION['password']=$new_password;
+        $_SESSION['login'] = $new_number;
+        $_SESSION['password'] = $new_password;
         header("Location: user_profile.php");
-    } else{
-        echo "Данные не были обновлены, произошла ошибка<br>";
-        echo "<a href='index.php'>Главная страница</a><br>";
+    } else {
+        echo "Данные не были обновлены, произошла ошибка" . "<br>";
+        echo "<a href='index.php'>Главная страница</a>" . "<br>";
         echo "<a href='user_profile.php'>Профиль</a>";
     }
-
-?>
