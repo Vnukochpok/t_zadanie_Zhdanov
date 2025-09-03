@@ -4,7 +4,7 @@
     
     //создание сессии, подлючение к БД, а также получение данных из сессии
     session_start();
-    $conn=mysqli_connect("localhost", "root", "", "bd_test_zadanie");
+    require("connect_bd_php");
     $userlogin = $_SESSION['login'];
     $userpassword = $_SESSION['password'];
     //проверка на наличие в сесси данных, если данных в сессии нет, то пользователь не сможет войти в профиль

@@ -1,7 +1,7 @@
 <?php
     //создание сессии, подключение к БД
     session_start();
-    $conn=mysqli_connect("localhost", "root", "", "bd_test_zadanie");
+    require("connect_bd_php");
 
     //беру логин из сессии для того, чтобы определить пользователя в БД, чьи данные я буду менять
     $login = $_SESSION['login'];

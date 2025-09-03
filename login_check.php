@@ -5,7 +5,7 @@
     $login = $_POST['login'];
     $password = $_POST['password'];
     
-    $conn=mysqli_connect("localhost", "root", "", "bd_test_zadanie");
+    require("connect_bd_php");
     
     //так же сразу проверяю наличие подключения к БД
     if($conn->connect_error){
