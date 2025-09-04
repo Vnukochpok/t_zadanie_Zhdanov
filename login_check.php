@@ -1,6 +1,6 @@
 <?php
 
-    //из примера кода на странице Яндекса был взят пример по проверки прохождения капчи, он был встроен в мой код
+    //из примера кода на странице Яндекса была взята проверка прохождения капчи, он был встроен в мой код
     define('SMARTCAPTCHA_SERVER_KEY', 'server-key');
     //методом POST получаю данные
     $login = $_POST['login'];
@@ -8,7 +8,7 @@
     
     require("connect_bd.php");
     
-    //так же сразу проверяю наличие подключения к БД
+    //провека наличия подключения к БД
     if ($conn->connect_error) {
         echo "Ошибка при подключении к БД";
         die();
@@ -56,8 +56,7 @@
                 $_SESSION['login'] = $login;
                 $_SESSION['password'] = $password;
                 header("Location: user_profile.php");
-            
-            } else if ($sqlRow < 1) {
+            } else if ($sqlRow < 1 || $sqlRow > 1) {
                 echo "Пользователь не найден" . "<br>";
                 echo "<a href='login.php'>Страница авторизации</a>";
             }

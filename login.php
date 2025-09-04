@@ -8,7 +8,7 @@
         <input type="text" name="login" placeholder="Введите email или номер телефона"><br>
         <input type="password" name="password" placeholder="Введите пароль"><br>
         <script src="https://smartcaptcha.yandexcloud.net/captcha.js" defer></script>
-        <!-- Здесь же добавил капчу (код взял из инструкции по установке капчиЮ) -->
+        <!-- Здесь же добавил капчу (код взял из инструкции по установке капчи) -->
         <div style="width:100px; height:80px;" id="captcha-container" class="smart-captcha" 
         data-sitekey="client_key">
         <input type="hidden" name="smart-token" value="">
