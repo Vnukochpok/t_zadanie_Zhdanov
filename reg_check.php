@@ -1,7 +1,7 @@
 <?php
 
     //создаю подключение к БД
-    require("connect_bd_php");
+    require("connect_bd.php");
     
     //сразу проверяю есть ли данное подключение
     if ($conn->connect_error) {

@@ -5,7 +5,7 @@
     
     //создание сессии, подлючение к БД, а также получение данных из сессии
     session_start();
-    require("connect_bd_php");
+    require("connect_bd.php");
     $userLogin = $_SESSION['login'];
     $userPassword = $_SESSION['password'];
 
