@@ -16,7 +16,7 @@
         $password2 = $_POST['password_2'];
 
         //запрос для проверки существования в БД пользователя с таким же email или номером телефона
-        $sqlCheckUser = "SELECT * FROM users WHERE email = '$email' OR number = '$numberTel'";
+        $sqlCheckUser = "SELECT * FROM users WHERE email = '$email' OR number = '$numberTel' OR name='$username'";
         //записываю в переменную количество полученных строк, от запроса
         $sqlRow = $conn->query($sqlCheckUser)->num_rows;
 
