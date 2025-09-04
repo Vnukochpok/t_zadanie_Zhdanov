@@ -6,7 +6,7 @@
     $login = $_POST['login'];
     $password = $_POST['password'];
     
-    require("connect_bd_php");
+    require("connect_bd.php");
     
     //так же сразу проверяю наличие подключения к БД
     if ($conn->connect_error) {
@@ -40,9 +40,9 @@
 
         $token = $_POST['smart-token'];
             if (check_captcha($token)) {
-                echo "Passed\n";
+                echo "Captcha успешно пройдена\n";
             } else {
-               echo "Robot\n";
+               echo "Captcha не пройдена\n";
             }
 
             //после проверки токена создаю sql запрос для проверки есть ли такой пользователь в базе данных и верно ли он ввел логин/пароль
