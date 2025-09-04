@@ -20,9 +20,10 @@
         //записываю в переменную количество полученных строк, от запроса
         $sqlRow = $conn->query($sqlCheckUser)->num_rows;
 
+
         //соответственно, если строк >0, то пользователь уже есть в БД
         if ($sqlRow > 0) {
-            echo "Пользователь с таким email или номером телефона уже существует" . "<br>";
+            echo "Пользователь с таким email, номером телефона или логином уже существует" . "<br>";
             echo "<a href='registration.php'>Вернуться на страницу регистрации<a>";
             die();
         //проверки на введенные данные: реальное имя, равен ли первый пароль второму, и проверка на длину пароля
@@ -34,6 +35,9 @@
             echo "<a href='registration.php'>Вернуться на страницу регистрации<a>";
         } else if (strlen($password1) < 8) {
             echo "Используйте более надежный пароль!" . "<br>";
+            echo "<a href='registration.php'>Вернуться на страницу регистрации<a>";
+        } else if (is_numeric($numberTel) === false) {
+            echo "Вы ввели номер телефона с буквами" . "<br>";
             echo "<a href='registration.php'>Вернуться на страницу регистрации<a>";
         } else {
             $sqlAddUser = "INSERT INTO users (name, number, email, password)
